@@ -1,0 +1,87 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="faq">
+    <div class="container">
+        <div class="faq-inner">
+            <div class="faq-head">
+                <h2 class="faq-title">
+                    {{ section.settings.title }}
+                </h2>
+                <p class="faq-subtitle">
+                    {{ section.settings.subtitle }}
+                </p>
+            </div>
+            <div class="faq-list">
+                {% for block in section.blocks %}
+                    <div class="faq-item {% if forloop.index == 1 %}is-active{% endif %}">
+                        <button class="faq-question" type="button" aria-label="Toggle question">
+                            <span>{{ block.settings.title }}</span>
+                        </button>
+                        <div class="faq-answer" {% if forloop.index == 1 %}style="display: block"{% endif %}>
+                            <p>
+                                {{ block.settings.text }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "default": "Need To Know More?"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+      "default": "We are here to help"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom FAQ"
+    }
+  ]
+}
+{% endschema %}

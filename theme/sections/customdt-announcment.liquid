@@ -1,0 +1,56 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="exclusive" style="background-color: {{ section.settings.background }};">
+    <div class="container">
+        <div class="exclusive-inner">
+            <p style="color: {{ section.settings.text }};">
+                {{section.settings.title }}
+            </p>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom announcment",
+  "tag": "div",
+  "class": "announcment",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Let’s Keep In Touch"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "background color",
+      "default": "#9fca69"
+    },
+    {
+      "type": "color",
+      "id": "text",
+      "label": "text color",
+      "default": "#1d1f1e"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom announcment"
+    }
+  ]
+}
+{% endschema %}

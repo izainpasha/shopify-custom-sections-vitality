@@ -1,0 +1,106 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="header-top">
+    <div class="container">
+        <div class="header-list">
+            <div class="header-item">
+                <div class="header-icon">
+                    <img src="{{ section.settings.item1_image | img_url:'master' }}" alt="leaf" />
+                </div>
+                <div class="header-text">{{ section.settings.item_1 }}</div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-item">
+                <div class="header-icon">
+                    <img src="{{ section.settings.item2_image | img_url:'master' }}" alt="shield" />
+                </div>
+                <div class="header-text">{{ section.settings.item_2 }}</div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-item">
+                <div class="header-icon">
+                    <img src="{{ section.settings.item3_image | img_url:'master' }}" alt="clock" />
+                </div>
+                <div class="header-text">{{ section.settings.item_3 }}</div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-item">
+                <div class="header-icon">
+                    <img src="{{ section.settings.item4_image | img_url:'master' }}" alt="heart" />
+                </div>
+                <div class="header-text">{{ section.settings.item_4 }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom header announcment",
+  "tag": "div",
+  "class": "announcment",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "item1_image",
+        "label": "Item 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "item_1",
+      "label": "Item 1 text",
+      "default": "100% Natural Ingredients"
+    },
+    {
+        "type": "image_picker",
+        "id": "item2_image",
+        "label": "Item 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "item_2",
+      "label": "Item 2 text",
+      "default": "Doctor Approved"
+    },
+    {
+        "type": "image_picker",
+        "id": "item3_image",
+        "label": "Item 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "item_3",
+      "label": "Item 3 text",
+      "default": "Quality Tested"
+    },
+    {
+        "type": "image_picker",
+        "id": "item4_image",
+        "label": "Item 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "item_4",
+      "label": "Item 4 text",
+      "default": "Safe For Everyday Use"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom header announcment"
+    }
+  ]
+}
+{% endschema %}

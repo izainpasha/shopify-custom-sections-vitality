@@ -1,0 +1,134 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="hero">
+    <div class="hero-bg">
+        <img src="{{ section.settings.banner_image | img_url:'master' }}" alt="hero" />
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-head">
+                <h1 class="hero-title">
+                    {{ section.settings.title }}
+                </h1>
+                <div class="hero-description">
+                    <p>
+                        {{ section.settings.subtitle }}
+                    </p>
+                </div>
+            </div>
+            <div class="hero-body">
+                <div class="hero-wrapper">
+                    <a class="btn btn--primary" href="{{ section.settings.button_link }}">
+                        {{ section.settings.button_text }}
+                    </a>
+                    <div class="hero-rating">
+                        <div class="stars">
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                        </div>
+                        <div class="hero-rating-text"><span>4.9/5</span> based on 4,974 reviews</div>
+                    </div>
+                </div>
+                <ul class="hero-list">
+                    <li class="hero-item">
+                        <span class="hero-value">97%</span>
+                        <p class="hero-text">Experienced less bloating</p>
+                    </li>
+                    <li class="hero-item">
+                        <span class="hero-value">95%</span>
+                        <p class="hero-text">Would recommend to friends</p>
+                    </li>
+                    <li class="hero-item">
+                        <span class="hero-value">94%</span>
+                        <p class="hero-text">Now use daily</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "default": "Let’s Keep In Touch"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+      "default": "SubTitle"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "button text"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "button link"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,127 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="follow">
+    <div class="container">
+        <div class="follow-inner">
+            <div class="follow-head">
+                <h2 class="follow-title">
+                    {{ section.settings.title }}
+                </h2>
+                <a href="{{ section.settings.button_link }}" class="follow-link">
+                    <span class="follow-link-icon">
+                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/instagram-black.svg?v=1764271449" alt="instagram" />
+                    </span>
+                    {{ section.settings.subtitle }}
+                </a>
+            </div>
+            <div class="follow-wrapper">
+                <div class="follow-one">
+                    <div class="follow-img">
+                        <img src="{{ section.settings.left_image | img_url:'master' }}" alt="follow" />
+                    </div>
+                </div>
+                <div class="follow-two">
+                    <div class="follow-img">
+                        <img src="{{ section.settings.right_image1 | img_url:'master' }}" alt="follow" />
+                    </div>
+                    <div class="follow-img">
+                        <img src="{{ section.settings.right_image2 | img_url:'master' }}" alt="follow" />
+                    </div>
+                    <div class="follow-img">
+                        <img src="{{ section.settings.right_image3 | img_url:'master' }}" alt="follow" />
+                    </div>
+                    <div class="follow-img">
+                        <img src="{{ section.settings.right_image4 | img_url:'master' }}" alt="follow" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom follow",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Let’s Keep In Touch"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+      "default": "Follow us on @vitalitycycles"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Follow link"
+    },
+    {
+        "type": "image_picker",
+        "id": "left_image",
+        "label": "Left Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image1",
+        "label": "Right Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image2",
+        "label": "Right 2 Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image3",
+        "label": "Right 3 Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image4",
+        "label": "Right 4 Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom follow"
+    }
+  ]
+}
+{% endschema %}

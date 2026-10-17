@@ -1,0 +1,676 @@
+{%- comment -%}
+  Simple, clean option swatches
+  Usage:
+    {% render 'dt-swatch', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign unique_id = 'QuantitySelector-' | append: section.id | append: '-' | append: product.id
+  assign current_variant = product.selected_or_first_available_variant
+  if variant
+    assign current_variant = variant
+  endif
+  assign quantity_value = 1
+  
+  assign background_color = background_color | default: '#f2f2f2'
+  assign button_color = button_color | default: '#FFFFFF'
+  assign text_color = text_color | default: '#333333'
+  assign margin_top = margin_top | default: 0
+  assign margin_bottom = margin_bottom | default: 12
+
+  assign price = current_variant.price
+-%}
+
+<style>
+  .dt-swatch-wrapper{
+    width: 100%;
+  }
+  .dtpdp-options-group2-items-val{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 0 18px;
+    background: #F8F8F8;
+    border: 1px solid #E5E5E5;
+    border-radius: 6px;
+    height: 165px;
+    cursor: pointer;
+    color: #212121;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dtpdp-options-group2-items-val.active{
+    background: #183013;
+    color: #fff;
+  }
+  .dtpdp-options-group2-items-val{
+    position: relative;
+    font-size: 12px;
+  }
+  .dtpdp-options-group2-items-val-discount{
+    padding: 5px 12px;
+    position: absolute;
+    background: #E32850;
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    top: calc(100% - 8px);
+    left: 50%;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+  .dtpdp-options-group2-items-val-lable{
+    padding: 5px 12px;
+    position: absolute;
+    background: #F6A60C;
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    bottom: calc(100% - 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .dtpdp-options-group2-items-val-lable2{
+    padding: 5px 12px;
+    position: absolute;
+    background: #9E28E3;
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    bottom: calc(100% - 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .dtpdp-options-group2-items-val img{
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+  .button-text2{
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase!important;
+    color: #FFFFFF;
+  }
+</style>
+
+<script>console.log({{ product | json }})</script>
+
+<div class="dtpdp-options">
+  
+</div>
+<div class="dt-swatch-wrapper">
+
+      {% comment %} <div class="dtpdp-options-group1">
+        <div class="dtpdp-options-group-title">
+          1. Select strength
+        </div>
+
+        <div class="dtpdp-options-group1-items">
+          <a class="dtpdp-options-group1-items-link {% if product.handle == "the-advacned-cleansing-protocol" %}active{% endif %}" href="{% if product.handle == "the-advacned-cleansing-protocol" %}#{% else %}/products/the-advacned-cleansing-protocol{% endif %}" class="active">
+            Extra Strength
+          </a>
+
+          <a class="dtpdp-options-group1-items-link {% if product.handle == "the-original-cleansing-protocol" %}active{% endif %}" href="{% if product.handle == "the-original-cleansing-protocol" %}#{%else%}/products/the-original-cleansing-protocol{% endif %}">
+            Regular Strength
+          </a>
+        </div>
+      </div> {% endcomment %}
+
+
+      {% comment %} start of dropdown swatch code for RegularStrength/ExtraStrength Vitality Capsules {% endcomment %}
+
+      {% if product.handle == 'the-original-cleansing-protocol' or product.handle == 'the-advacned-cleansing-protocol' %}
+
+      <div class="strength-selector">
+        <div class="dtpdp-options-group-title">
+          Select Your Strength
+        </div>
+
+        <div class="strength-dropdown" data-strength-dropdown>
+
+          <!-- TRIGGER -->
+          <button
+            type="button"
+            class="strength-dropdown__trigger"
+            aria-expanded="false"
+            aria-controls="strength-dropdown-menu"
+          >
+            <div class="strength-dropdown__selected">
+
+              <!-- IMAGE -->
+              <div class="strength-dropdown__media">
+                {% if product.handle == 'the-original-cleansing-protocol' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/a6a7bf5209910400980d4f358caf81f0d2637d60_1.png?v=1775076239" alt="Regular Strength">
+                {% elsif product.handle == 'the-advacned-cleansing-protocol' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/7c949c0a8507e9c0889eef19954c8727cc7e73fa.png?v=1775076240" alt="Extra Strength">
+                {% endif %}
+              </div>
+
+              <!-- TEXT -->
+              <div class="strength-dropdown__content">
+                <div class="strength-dropdown__heading-wrap">
+                  <span class="strength-dropdown__heading">
+                    {% if product.handle == 'the-original-cleansing-protocol' %}
+                      Regular Strength
+                    {% elsif product.handle == 'the-advacned-cleansing-protocol' %}
+                      Extra Strength
+                    {% else %}
+                      {{ product.title }}
+                    {% endif %}
+                  </span>
+
+                  {% if product.handle == 'the-original-cleansing-protocol' %}
+                    <span class="strength-dropdown__badge">Recommended</span>
+                  {% endif %}
+                </div>
+
+                <div class="strength-dropdown__subtext">
+                  {% if product.handle == 'the-original-cleansing-protocol' %}
+                    For Beginners
+                  {% elsif product.handle == 'the-advacned-cleansing-protocol' %}
+                    For Advanced Users
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- SINGLE ROTATING ICON -->
+              <span class="strength-dropdown__icon">
+                <svg width="11" height="8" viewBox="0 0 18 11" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 1.5L9 9L16.5 1.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </button>
+
+          <!-- DROPDOWN MENU -->
+          <div id="strength-dropdown-menu" class="strength-dropdown__menu" hidden>
+
+            {% if product.handle == 'the-original-cleansing-protocol' %}
+              <!-- SHOW ONLY EXTRA STRENGTH -->
+              <a class="strength-dropdown__option"
+                href="/products/the-advacned-cleansing-protocol">
+                <div class="strength-dropdown__media">
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/7c949c0a8507e9c0889eef19954c8727cc7e73fa.png?v=1775076240" alt="Extra Strength">
+                </div>
+
+                <div class="strength-dropdown__content">
+                  <div class="strength-dropdown__heading-wrap">
+                    <span class="strength-dropdown__heading">Extra Strength</span>
+                  </div>
+                  <div class="strength-dropdown__subtext">For Advanced Users</div>
+                </div>
+              </a>
+
+            {% elsif product.handle == 'the-advacned-cleansing-protocol' %}
+              <!-- SHOW ONLY REGULAR STRENGTH -->
+              <a class="strength-dropdown__option"
+                href="/products/the-original-cleansing-protocol">
+                <div class="strength-dropdown__media">
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/a6a7bf5209910400980d4f358caf81f0d2637d60_1.png?v=1775076239" alt="Regular Strength">
+                </div>
+
+                <div class="strength-dropdown__content">
+                  <div class="strength-dropdown__heading-wrap">
+                    <span class="strength-dropdown__heading">Regular Strength</span>
+                    <span class="strength-dropdown__badge">Recommended</span>
+                  </div>
+                  <div class="strength-dropdown__subtext">For Beginners</div>
+                </div>
+              </a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+      {% comment %} end of dropdown swatch code for RegularStrength/ExtraStrength Vitality Capsules {% endcomment %}
+
+
+
+      {% comment %} start of dropdown swatch code for AdvancedCellular/ExtraCellular renewal system {% endcomment %}
+     
+      {% if product.handle == 'the-advanced-cellular-renewal-system' or product.handle == 'the-original-cellular-renewal-system' %}
+
+            <div class="strength-selector">
+        <div class="dtpdp-options-group-title">
+          Select Your Strength
+        </div>
+
+        <div class="strength-dropdown" data-strength-dropdown>
+
+          <!-- TRIGGER -->
+          <button
+            type="button"
+            class="strength-dropdown__trigger"
+            aria-expanded="false"
+            aria-controls="strength-dropdown-menu"
+          >
+            <div class="strength-dropdown__selected">
+
+              <!-- IMAGE -->
+              <div class="strength-dropdown__media">
+                {% if product.handle == 'the-original-cellular-renewal-system' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/4_3.png?v=1776277767" alt="Regular Strength">
+                {% elsif product.handle == 'the-advanced-cellular-renewal-system' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/3_5.png?v=1776277767" alt="Extra Strength">
+                {% endif %}
+              </div>
+
+              <!-- TEXT -->
+              <div class="strength-dropdown__content">
+                <div class="strength-dropdown__heading-wrap">
+                  <span class="strength-dropdown__heading">
+                    {% if product.handle == 'the-original-cellular-renewal-system' %}
+                      Original Renewal System
+
+                    {% elsif product.handle == 'the-advanced-cellular-renewal-system' %}
+                      Advanced Renewal System
+                    {% else %}
+                      {{ product.title }}
+                    {% endif %}
+                  </span>
+
+                  {% if product.handle == 'the-original-cellular-renewal-system' %}
+                    <span class="strength-dropdown__badge">Recommended</span>
+                  {% endif %}
+                </div>
+
+                <div class="strength-dropdown__subtext">
+                  {% if product.handle == 'the-original-cellular-renewal-system' %}
+                    For Beginners
+                  {% elsif product.handle == 'the-advanced-cellular-renewal-system' %}
+                    For Advanced Users
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- SINGLE ROTATING ICON -->
+              <span class="strength-dropdown__icon">
+                <svg width="11" height="8" viewBox="0 0 18 11" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 1.5L9 9L16.5 1.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </button>
+
+          <!-- DROPDOWN MENU -->
+          <div id="strength-dropdown-menu" class="strength-dropdown__menu" hidden>
+
+            {% if product.handle == 'the-original-cellular-renewal-system' %}
+              <!-- SHOW ONLY Advanced Renewal System -->
+              <a class="strength-dropdown__option"
+                href="/products/the-advanced-cellular-renewal-system">
+                <div class="strength-dropdown__media">
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/3_5.png?v=1776277767" alt="Extra Strength">
+                </div>
+
+                <div class="strength-dropdown__content">
+                  <div class="strength-dropdown__heading-wrap">
+                    <span class="strength-dropdown__heading">Advanced Renewal System</span>
+                  </div>
+                  <div class="strength-dropdown__subtext">For Advanced Users</div>
+                </div>
+              </a>
+
+            {% elsif product.handle == 'the-advanced-cellular-renewal-system' %}
+              <!-- SHOW ONLY Original Renewal System -->
+              <a class="strength-dropdown__option"
+                href="/products/the-original-cellular-renewal-system">
+                <div class="strength-dropdown__media">
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/4_3.png?v=1776277767" alt="Regular Strength">
+                </div>
+
+                <div class="strength-dropdown__content">
+                  <div class="strength-dropdown__heading-wrap">
+                    <span class="strength-dropdown__heading">Original Renewal System</span>
+                    <span class="strength-dropdown__badge">Recommended</span>
+                  </div>
+                  <div class="strength-dropdown__subtext">For Beginners</div>
+                </div>
+              </a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+
+      {% endif %}
+
+      {% comment %} end of dropdown swatch code for AdvancedCellular/ExtraCellular renewal system {% endcomment %}
+
+      
+      {% comment %} start of dropdown swatch code for Regular Strength/Extra Strength Vitality Capsules- Buy 2, Get 1 Free {% endcomment %}
+     
+      {% if product.handle == 'extra-strength-90-day-cleanse-2-months-1-month-free' or product.handle == 'regular-strength-90-day-cleanse-2-months-1-month-free' %}
+
+            <div class="strength-selector">
+        <div class="dtpdp-options-group-title">
+          Select Your Strength
+        </div>
+
+        <div class="strength-dropdown" data-strength-dropdown>
+
+          <!-- TRIGGER -->
+          <button
+            type="button"
+            class="strength-dropdown__trigger"
+            aria-expanded="false"
+            aria-controls="strength-dropdown-menu"
+          >
+            <div class="strength-dropdown__selected">
+
+              <!-- IMAGE -->
+              <div class="strength-dropdown__media">
+                {% if product.handle == 'extra-strength-90-day-cleanse-2-months-1-month-free' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/7c949c0a8507e9c0889eef19954c8727cc7e73fa.png?v=1775076240" alt="Extra Strength">
+                {% elsif product.handle == 'regular-strength-90-day-cleanse-2-months-1-month-free' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/a6a7bf5209910400980d4f358caf81f0d2637d60_1.png?v=1775076239" alt="Regular Strength">
+                {% endif %}
+              </div>
+
+              <!-- TEXT -->
+              <div class="strength-dropdown__content">
+                <div class="strength-dropdown__heading-wrap">
+                  <span class="strength-dropdown__heading">
+                    {% if product.handle == 'regular-strength-90-day-cleanse-2-months-1-month-free' %}
+                      Regular Strength
+
+                    {% elsif product.handle == 'extra-strength-90-day-cleanse-2-months-1-month-free' %}
+                      Extra Strength
+                    {% else %}
+                      {{ product.title }}
+                    {% endif %}
+                  </span>
+
+                  {% if product.handle == 'regular-strength-90-day-cleanse-2-months-1-month-free' %}
+                    <span class="strength-dropdown__badge">Recommended</span>
+                  {% endif %}
+                </div>
+
+                <div class="strength-dropdown__subtext">
+                  {% if product.handle == 'regular-strength-90-day-cleanse-2-months-1-month-free' %}
+                    For Beginners
+                  {% elsif product.handle == 'extra-strength-90-day-cleanse-2-months-1-month-free' %}
+                    For Advanced Users
+                  {% endif %}
+                </div>
+              </div>
+
+              <!-- SINGLE ROTATING ICON -->
+              <span class="strength-dropdown__icon">
+                <svg width="11" height="8" viewBox="0 0 18 11" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 1.5L9 9L16.5 1.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </button>
+
+          <!-- DROPDOWN MENU -->
+          <div id="strength-dropdown-menu" class="strength-dropdown__menu" hidden>
+
+            {% if product.handle == 'regular-strength-90-day-cleanse-2-months-1-month-free' %}
+              <!-- SHOW ONLY Advanced Renewal System -->
+              <a class="strength-dropdown__option"
+                href="/products/extra-strength-90-day-cleanse-2-months-1-month-free">
+                <div class="strength-dropdown__media">
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/a6a7bf5209910400980d4f358caf81f0d2637d60_1.png?v=1775076239" alt="Regular Strength">
+                </div>
+
+                <div class="strength-dropdown__content">
+                  <div class="strength-dropdown__heading-wrap">
+                    <span class="strength-dropdown__heading">Extra Strength</span>
+                  </div>
+                  <div class="strength-dropdown__subtext">For Advanced Users</div>
+                </div>
+              </a>
+
+            {% elsif product.handle == 'extra-strength-90-day-cleanse-2-months-1-month-free' %}
+              <!-- SHOW ONLY Original Renewal System -->
+              <a class="strength-dropdown__option"
+                href="/products/regular-strength-90-day-cleanse-2-months-1-month-free">
+                <div class="strength-dropdown__media">
+                  <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/7c949c0a8507e9c0889eef19954c8727cc7e73fa.png?v=1775076240" alt="Extra Strength">
+                </div>
+
+                <div class="strength-dropdown__content">
+                  <div class="strength-dropdown__heading-wrap">
+                    <span class="strength-dropdown__heading">Regular Strength</span>
+                    <span class="strength-dropdown__badge">Recommended</span>
+                  </div>
+                  <div class="strength-dropdown__subtext">For Beginner</div>
+                </div>
+              </a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+
+      {% endif %}
+
+      {% comment %} end of dropdown swatch code for AdvancedCellular/ExtraCellular renewal system {% endcomment %}
+
+
+      <div class="dtpdp-options-group1" style="display: none;">
+        <div class="dtpdp-options-group-title">
+          2. Select Quantity
+        </div>
+
+        <div class="dtpdp-options-group2-items">
+          <div class="dtpdp-options-group2-items-val active" data-quantity="1">
+
+            {% if product.handle == "the-advacned-cleansing-protocol" %}
+            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/Frame_1484580483_3.png?v=1762546750">
+            {% elsif product.handle == "the-original-cleansing-protocol" %}
+            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/Frame_1484580483_5.png?v=1762546784">
+            {% endif %}
+            1 bottle
+          </div>
+
+          <div class="dtpdp-options-group2-items-val" data-quantity="3">
+
+            {% if product.handle == "the-advacned-cleansing-protocol" %}
+            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/Frame_1484580484_2.png?v=1762546750">
+            {% elsif product.handle == "the-original-cleansing-protocol" %}
+            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/Frame_1484580484_3.png?v=1762546784">
+            {% endif %}
+            
+            3 bottles
+
+            <span class="dtpdp-options-group2-items-val-lable">
+              {{ block.settings.discount_1 }}
+            </span>
+
+            <span class="dtpdp-options-group2-items-val-discount">
+              {{ block.settings.percentage_1 }}
+            </span>
+          </div>
+
+          <div class="dtpdp-options-group2-items-val" data-quantity="6">
+
+            
+            {% if product.handle == "the-advacned-cleansing-protocol" %}
+            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/Frame_1484580483_4.png?v=1762546750">
+            {% elsif product.handle == "the-original-cleansing-protocol" %}
+            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/Frame_1484580483_6.png?v=1762546785">
+            {% endif %}
+            6 bottles
+
+            <span class="dtpdp-options-group2-items-val-lable2">
+              {{ block.settings.discount_2 }}
+            </span>
+            <span class="dtpdp-options-group2-items-val-discount">
+              {{ block.settings.percentage_2 }}
+            </span>
+          </div>
+        </div>
+      </div>
+</div>
+
+<script>
+  var parser = new DOMParser();
+  var originPrice = '{{ price | money }}';
+  const currency = window.Shopify?.currency?.active ?? 'USD';
+
+  const formId = '{{ product_form_id }}';
+  const form = document.getElementById(formId);
+
+  function formatMoney(newMoney) {
+    const originPriceNumber = originPrice.replace(/[^0-9.,]/g, '');
+    return `${originPrice.replace(originPriceNumber, newMoney)} ${currency}`;
+  }
+  function formatMoneyWithoutSuffix(newMoney) {
+    const originPriceNumber = originPrice.replace(/[^0-9.,]/g, '');
+    return `${originPrice.replace(originPriceNumber, newMoney)}`;
+  }
+</script>
+<script>
+  const locale = window.Shopify?.locale ?? "en";
+  const country = window.Shopify?.country;
+  const countryLocale = locale.includes("-") ? locale : `${locale}-${country}`;
+
+document.addEventListener('click', function(e) {
+
+  const formatter = new Intl.NumberFormat(countryLocale, {
+    minimumFractionDigits: 2
+  });
+  const productPriceLabel = document.querySelector(".price-item--last");
+  const comparePriceLabel = document.querySelectorAll(".price-item--regular");
+
+  const variantPrice = {{ current_variant.price | json }};
+  const variantComparePrice = {{ current_variant.compare_at_price | default: 0 | json }};
+
+  const el = e.target.closest('.dtpdp-options-group2-items-val');
+  if (!el) return;
+
+  const q = parseInt(el.dataset.quantity, 10) || 1;
+
+  // 1) Find your specific form
+  const form = document.querySelector('.product-form__submit');
+  if (!form) return;
+
+  // 2) Ensure quantity input exists
+  let qty = form.querySelector('input[name="quantity"]');
+  if (!qty) {
+    qty = document.createElement('input');
+    qty.type = 'hidden';
+    qty.name = 'quantity';
+    form.appendChild(qty);
+  }
+
+  // 3) Update value + form attribute + notify listeners
+  qty.value = q;
+  form.setAttribute('data-quantity', q);
+  qty.dispatchEvent(new Event('change', { bubbles: true }));
+
+  if (typeof updateCartButtonPrice === 'function') {
+    updateCartButtonPrice(q);
+  }
+
+  const totalPrice = variantPrice * q;
+  const formattedPrice = formatter.format(totalPrice / 100);
+  
+  const totalComparePrice = variantComparePrice * q;
+  const formattedComparePrice = formatter.format(totalComparePrice / 100);
+
+
+  console.log(comparePriceLabel)
+
+  if (productPriceLabel){
+    comparePriceLabel.innerText = formatMoneyWithoutSuffix(formattedComparePrice);
+    comparePriceLabel.forEach(function(item, index) {
+      item.innerText = formatMoneyWithoutSuffix(formattedComparePrice);
+    });
+  }
+  if (productPriceLabel){
+    productPriceLabel.innerHTML = formatMoneyWithoutSuffix(formattedPrice);
+  }
+
+  // 4) Toggle active state within the same group
+  const group = el.closest('.dtpdp-options-group2-items') || document;
+  group.querySelectorAll('.dtpdp-options-group2-items-val.active').forEach(n => {
+    n.classList.remove('active');
+    n.setAttribute('aria-pressed', 'false');
+  });
+  el.classList.add('active');
+  el.setAttribute('aria-pressed', 'true');
+});
+</script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var dropdowns = document.querySelectorAll('[data-strength-dropdown]');
+
+    dropdowns.forEach(function (dropdown) {
+      var trigger = dropdown.querySelector('.strength-dropdown__trigger');
+      var menu = dropdown.querySelector('.strength-dropdown__menu');
+
+      if (!trigger || !menu) return;
+
+      trigger.addEventListener('click', function () {
+        var isOpen = dropdown.classList.contains('is-open');
+
+        document.querySelectorAll('[data-strength-dropdown].is-open').forEach(function (openDropdown) {
+          openDropdown.classList.remove('is-open');
+          var openTrigger = openDropdown.querySelector('.strength-dropdown__trigger');
+          var openMenu = openDropdown.querySelector('.strength-dropdown__menu');
+
+          if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
+          if (openMenu) openMenu.hidden = true;
+        });
+
+        if (!isOpen) {
+          dropdown.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+          menu.hidden = false;
+        }
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      document.querySelectorAll('[data-strength-dropdown]').forEach(function (dropdown) {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove('is-open');
+
+          var trigger = dropdown.querySelector('.strength-dropdown__trigger');
+          var menu = dropdown.querySelector('.strength-dropdown__menu');
+
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          if (menu) menu.hidden = true;
+        }
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        document.querySelectorAll('[data-strength-dropdown]').forEach(function (dropdown) {
+          dropdown.classList.remove('is-open');
+
+          var trigger = dropdown.querySelector('.strength-dropdown__trigger');
+          var menu = dropdown.querySelector('.strength-dropdown__menu');
+
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          if (menu) menu.hidden = true;
+        });
+      }
+    });
+  });
+</script>

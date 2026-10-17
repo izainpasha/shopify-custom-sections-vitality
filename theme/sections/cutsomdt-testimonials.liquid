@@ -1,0 +1,143 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="testimonials">
+    <div class="container">
+        <div class="testimonials-inner">
+            <div class="testimonials-head">
+                <h2 class="testimonials-rating">
+                    <div class="stars">
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                    </div>
+                    <div>{{ section.settings.title }}</div>
+                </h2>
+                <h2 class="testimonials-title">{{ section.settings.subtitle }}</h2>
+            </div>
+            <div class="testimonials-slider swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        <div class="swiper-slide testimonials-item">
+                            <div class="testimonials-image">
+                                <img src="{{block.settings.image | img_url:'master' }}" alt="testimonials" />
+                            </div>
+                            <div class="testimonials-content">
+                                <div class="stars">
+                                    <div class="start-icon">
+                                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                                    </div>
+                                    <div class="start-icon">
+                                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                                    </div>
+                                    <div class="start-icon">
+                                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                                    </div>
+                                    <div class="start-icon">
+                                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                                    </div>
+                                    <div class="start-icon">
+                                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                                    </div>
+                                </div>
+                                <div class="testimonials-text">{{ block.settings.title }}</div>
+                                <div class="testimonials-author">
+                                    <div class="testimonials-name">{{ block.settings.price }}</div>
+                                    <div class="testimonials-icon">
+                                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/verified.svg?v=1764266587" alt="review" />
+                                    </div>
+                                    <div class="testimonials-verified">Verified Customer</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="testimonials-nav">
+                <button class="btn-arrow btn-arrow--prev"></button>
+                <button class="btn-arrow btn-arrow--next"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+      "default": "SubTitle"
+    },
+    {
+      "type": "html",
+      "id": "bottomtext",
+      "label": "Bottom text",
+      "default": "Bottom text"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Vitality Capsules"
+            },
+            {
+                "type": "text",
+                "id": "price",
+                "label": "Name",
+                "default": "Patricia I."
+            },
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom testimonials"
+    }
+  ]
+}
+{% endschema %}

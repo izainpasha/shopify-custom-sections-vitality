@@ -1,0 +1,184 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .benefitspage-text{
+    margin-bottom: 50px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    color: #444F4A;
+  }
+  .benefitspage-title{
+    margin: 0;
+    margin-bottom: 28px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 120%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #183013;
+  }
+  .benefitspage-title{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #56A535;
+  }
+  .benefitspage-description{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    color: #1D1F1E;
+    margin-top: 15px;
+  }
+  .benefitspage-icon img{
+    width: 80px;
+    display: block;
+    margin: auto;
+  }
+  .benefitspage-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 65px 30px;
+  }
+  .benefitspage-title{
+    margin: 0;
+  }
+  .benefitspage-content{
+    margin-top: 25px;
+  }
+  .benefitspage-pagetitle{
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 120%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #183013;
+  }
+  .benefitspage-text{
+    margin-top: 28px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    color: #444F4A;
+  }
+
+  @media(max-width: 799px){
+    .benefitspage-pagetitle{
+        font-size: 32px;
+    }
+    .benefitspage-text{
+        font-size: 24px;
+    }
+    .benefitspage-list{
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+    }
+    .benefitspage-title{
+        font-size: 18px;
+    }
+    .benefitspage-content{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="benefitspage">
+    <div class="container">
+        <div class="benefitspage-inner">
+            <h2 class="benefitspage-pagetitle">
+                {{ section.settings.title }}
+            </h2>
+            <div class="benefitspage-text">
+                {{ section.settings.text }}
+            </div>
+            <ul class="benefitspage-list">
+                {% for block in section.blocks %}
+                    <li class="benefitspage-item">
+                        <div class="benefitspage-icon">
+                            <img src="{{ block.settings.image | img_url:'master' }}" alt="benefitspage" />
+                        </div>
+                        <div class="benefitspage-content">
+                            <h2 class="benefitspage-title">{{block.settings.title}}</h2>
+                            <p class="benefitspage-description">{{ block.settings.text }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom page benefitspage",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "default": "Title",
+        "label": "Title"
+    },
+    {
+        "type": "text",
+        "id": "text",
+        "default": "Text",
+        "label": "Text"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "t:sections.collapsible_content.blocks.collapsible_row.name",
+      "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "default": "Title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "default": "Text",
+                "label": "Text"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom page benefitspage"
+    }
+  ]
+}
+{% endschema %}

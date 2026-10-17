@@ -1,0 +1,292 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .pdp-started{
+    padding: 75px 0;
+  }
+  .pdp-started-title{
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 120%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #183013;
+    letter-spacing: normal;
+    font-family: 'Beatrice',sans-serif!important;
+  }
+  .pdp-started-subtitle{
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #1D1F1E;
+    font-family: 'Beatrice',sans-serif!important;
+    margin-top: 30px;
+    letter-spacing: normal;
+  }
+  .pdp-started-inner{
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 82px;
+  }
+  .pdp-started-inner-item-image > img{
+    width:100px;
+    height: auto;
+    margin: auto;
+  }
+  .pdp-started-inner-item-num span{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background: #F5FFF0;
+    border: 1px solid #183013;
+    font-family: 'Beatrice',sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #183013;
+    border-radius: 50%;
+    margin: auto;
+    justify-content:center;
+    align-items:center;
+    margin-top: 24px;
+  }
+  .pdp-started-inner-item-title{
+    margin-top: 24px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.36;
+    text-transform: capitalize;
+    color: #56A535;
+    letter-spacing: normal;
+    text-align:center;
+  }
+  .pdp-started-inner-item-text{
+    text-align:center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #1D1F1E;
+    max-width: 360px;
+    margin: 24px auto 0 auto;
+    letter-spacing: normal;
+  }
+  @media(max-width: 799px){
+    .pdp-started-title{
+        font-size: 32px;
+    }
+    .pdp-started-subtitle{
+        font-size: 18px;
+    }
+    .pdp-started{
+        padding: 25px 0;
+    }
+    .pdp-started-inner{
+        margin-top: 24px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="pdp-started">
+    <div class="container">
+        <h2 class="pdp-started-title">
+            {{ section.settings.title }}
+        </h2>
+
+        <h4 class="pdp-started-subtitle">
+            {{ section.settings.subtitle }}
+        </h4>
+        <div class="pdp-started-inner">
+            <div class="pdp-started-inner-item">
+                <div class="pdp-started-inner-item-image">
+                    <img src="{{ section.settings.image1 | img_url:'master' }}">
+                </div>
+                <div class="pdp-started-inner-item-num">
+                    <span>
+                        1
+                    </span>
+                </div>
+                <div class="pdp-started-inner-item-title">
+                    {{ section.settings.title1 }}
+                </div>
+                <div class="pdp-started-inner-item-text">
+                    {{ section.settings.text1 }}
+                </div>
+            </div>
+
+            <div class="pdp-started-inner-item">
+                <div class="pdp-started-inner-item-image">
+                    <img src="{{ section.settings.image2 | img_url:'master' }}">
+                </div>
+                <div class="pdp-started-inner-item-num">
+                    <span>
+                        2
+                    </span>
+                </div>
+                <div class="pdp-started-inner-item-title">
+                    {{ section.settings.title2 }}
+                </div>
+                <div class="pdp-started-inner-item-text">
+                    {{ section.settings.text2 }}
+                </div>
+            </div>
+
+            <div class="pdp-started-inner-item">
+                <div class="pdp-started-inner-item-image">
+                    <img src="{{ section.settings.image3 | img_url:'master' }}">
+                </div>
+                <div class="pdp-started-inner-item-num">
+                    <span>
+                        3
+                    </span>
+                </div>
+                <div class="pdp-started-inner-item-title">
+                    {{ section.settings.title3 }}
+                </div>
+                <div class="pdp-started-inner-item-text">
+                    {{ section.settings.text3 }}
+                </div>
+            </div>
+        </div>
+
+        <div class="dt-pdp-buttonprice">
+            <div class="dt-pdp-buttonprice-top">
+                {{ section.settings.price_text }}
+                <span>
+                    {{ section.settings.save }}
+                </span>
+            </div>
+
+            <div class="dt-pdp-buttonprice-btn">
+                <a href="{{ section.settings.button_link }}">
+                    {{ section.settings.button_text }}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="dt-pdp-buttonprice-bottom">
+                {% render 'dt-pdpreviews' %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom pdp started",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    },
+    {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title 1",
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "label": "Text 1",
+    },
+    {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title 2",
+    },
+    {
+      "type": "text",
+      "id": "text2",
+      "label": "Text 2",
+    },
+    {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "title3",
+      "label": "Title 3",
+    },
+    {
+      "type": "text",
+      "id": "text3",
+      "label": "Text 3",
+    },
+    {
+        "type": "header",
+        "content": "BOttom button settings"
+    },
+    {
+      "type": "html",
+      "id": "price_text",
+      "label": "Price text",
+      "default": "For as low as <em>$85.00</em> $75.00"
+    },
+    {
+      "type": "text",
+      "id": "save",
+      "label": "Save text",
+      "default": "save $10"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "take the quiz"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Custom pdp started"
+    }
+  ]
+}
+{% endschema %}

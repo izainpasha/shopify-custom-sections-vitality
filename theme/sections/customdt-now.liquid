@@ -1,0 +1,156 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="now">
+    <div class="container">
+        <div class="now-inner">
+            <div class="now-one">
+                <div class="now-rating">
+                    <div class="stars">
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                        <div class="stars-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                        </div>
+                    </div>
+                    <div class="now-rating-text"><span>4.9/5</span> based on 4,974 reviews</div>
+                </div>
+                <h2 class="now-title">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="now-description">
+                    <p>
+                        {{ section.settings.subtitle }}
+                    </p>
+                </div>
+                <a href="{{ section.settings.button_link }}" class="btn btn--secondary">
+                    {{ section.settings.button_text }}
+                </a>
+
+                <div class="now-review">
+                    <div class="now-review-wrapper">
+                        <div class="now-avatar">
+                            <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/founder-avatar.png?v=1764266469" alt="founder" />
+                        </div>
+                        <div class="now-review-mob"></div>
+                    </div>
+                    <div class="now-review-content">
+                        <div class="stars" data-da=".now-review-mob, 767, 0">
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                        </div>
+                        <div class="now-review-text">
+                            <p>I have been using the vitality capsules regular strength for years and just ordered the extra strength since they have cayenne in them. I love the vitality capsules, they work so well in keeping me regular</p>
+                        </div>
+                        <div class="now-review-author" data-da=".now-review-mob, 767, 1">
+                            <div class="now-review-name">Patricia I.</div>
+                            <div class="now-review-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/verified.svg?v=1764266587" alt="review" />
+                            </div>
+                            <div class="now-review-verified">Verified Customer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="now-two">
+                <div class="now-img" data-da=".now-one, 1023, 2">
+                    <img src="{{ section.settings.right_image | img_url:'master' }}" alt="now" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom now",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "default": "Let’s Keep In Touch"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+      "default": "SubTitle"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "button text"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "button link"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image",
+        "label": "Right Image"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom now"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,261 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .usebottomtext{
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #1D1F1E;
+  }
+{%- endstyle -%}
+
+<section class="use">
+    <div class="container">
+        <div class="use-inner">
+            <div class="use-one">
+                <div class="use-head">
+                    <h2 class="use-title">
+                        {{section.settings.title }}
+                    </h2>
+                    <div class="use-subtitle">
+                        {{ section.settings.subtitle }}
+                    </div>
+
+                    {% if section.settings.text != blank %}
+                        <div class="usebottomtext">
+                            {{ section.settings.text }}
+                        </div>
+                    {% endif %}
+                </div>
+                {% if section.settings.setp1_icon != blank %}
+                <ul class="use-list">
+                    <li class="use-item">
+                        <div class="use-icon">
+                            <img src="{{section.settings.setp1_icon | img_url:'master'}}" alt="use" />
+                        </div>
+                        <div class="use-content">
+                            <h3 class="use-name">{{section.settings.step1_title}}</h3>
+                            <div class="use-description">{{section.settings.step1_text}}</div>
+                        </div>
+                    </li>
+                    <li class="use-item">
+                        <div class="use-icon">
+                            <img src="{{section.settings.setp2_icon | img_url:'master'}}" alt="use" />
+                        </div>
+                        <div class="use-content">
+                            <h3 class="use-name">{{section.settings.step2_title}}</h3>
+                            <div class="use-description">{{section.settings.step2_text}}</div>
+                        </div>
+                    </li>
+                    <li class="use-item">
+                        <div class="use-icon">
+                            <img src="{{section.settings.setp3_icon | img_url:'master'}}" alt="use" />
+                        </div>
+                        <div class="use-content">
+                            <h3 class="use-name">{{section.settings.step3_title}}</h3>
+                            <div class="use-description">{{section.settings.step3_text}}</div>
+                        </div>
+                    </li>
+                </ul>
+                {% endif %}
+
+                <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+                    {{ section.settings.button_text }}
+                </a>
+            </div>
+            <div class="use-two">
+                <div class="use-gallery">
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image1 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image2 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image3 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image4 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image5 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image6 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image7 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image8 | img_url:'master' }}" alt="use" />
+                    </div>
+                    <div class="use-image">
+                        <img src="{{ section.settings.gallery_image9 | img_url:'master' }}" alt="use" />
+                    </div>
+                </div>
+                <div class="use-logo">
+                    <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/use-logo.svg?v=1764267096" alt="use" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom use",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+    },
+    {
+      "type": "header",
+      "content": "Step1"
+    },
+    {
+        "type": "image_picker",
+        "id": "setp1_icon",
+        "label": "Step 1 Icon "
+    },
+    {
+      "type": "html",
+      "id": "step1_title",
+      "label": "Step 1 Title",
+    },
+    {
+      "type": "text",
+      "id": "step1_text",
+      "label": "Step 1 Text",
+    },
+    {
+      "type": "header",
+      "content": "Step2"
+    },
+    {
+        "type": "image_picker",
+        "id": "setp2_icon",
+        "label": "Step 2 Icon "
+    },
+    {
+      "type": "html",
+      "id": "step2_title",
+      "label": "Step 2 Title",
+    },
+    {
+      "type": "text",
+      "id": "step2_text",
+      "label": "Step 2 Text",
+    },
+    {
+      "type": "header",
+      "content": "Step3"
+    },
+    {
+        "type": "image_picker",
+        "id": "setp3_icon",
+        "label": "Step 3 Icon "
+    },
+    {
+      "type": "html",
+      "id": "step3_title",
+      "label": "Step 3 Title",
+    },
+    {
+      "type": "text",
+      "id": "step3_text",
+      "label": "Step 3 Text",
+    },
+
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image1",
+        "label": "Gallery Image 1"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image2",
+        "label": "Gallery Image 2"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image3",
+        "label": "Gallery Image 3"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image4",
+        "label": "Gallery Image 4"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image5",
+        "label": "Gallery Image 5"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image6",
+        "label": "Gallery Image 6"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image7",
+        "label": "Gallery Image 7"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image8",
+        "label": "Gallery Image 8"
+    },
+    {
+        "type": "image_picker",
+        "id": "gallery_image9",
+        "label": "Gallery Image 9"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom use"
+    }
+  ]
+}
+{% endschema %}

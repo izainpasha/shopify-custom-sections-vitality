@@ -1,0 +1,165 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="supplements">
+    <div class="container">
+        <div class="supplements-inner">
+            <div class="supplements-head">
+                <h2 class="supplements-title">
+                    {{section.settings.title }}</h2>
+                <div class="supplements-subtitle">{{ section.settings.subtitle }}</div>
+            </div>
+            <div class="supplements-wrapper">
+                <div class="supplements-slider swiper">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            <a class="swiper-slide supplements-item" href="{{ block.settings.button_link }}">
+                                <div class="supplements-image">
+                                    <img src="{{block.settings.image | img_url:'master' }}" alt="supplements" />
+                                </div>
+                                <div class="supplements-content">
+                                    <div class="supplements-rating">
+                                        <div class="supplements-stars">
+                                            <div class="supplements-star"></div>
+                                            <div class="supplements-star"></div>
+                                            <div class="supplements-star"></div>
+                                            <div class="supplements-star"></div>
+                                            <div class="supplements-star"></div>
+                                        </div>
+                                        {{ block.settings.reviews }}
+                                    </div>
+                                    <div class="supplements-name">{{ block.settings.title }}</div>
+                                    <div class="supplements-price">{{ block.settings.price }}</div>
+                                    <div class="supplements-description">{{ block.settings.text }}</div>
+                                </div>
+                                <div class="btn btn--secondary">{{  block.settings.button_text}}</div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="supplements-nav">
+                    <button class="btn-arrow btn-arrow--next"></button>
+                    <button class="btn-arrow btn-arrow--prev"></button>
+                </div>
+            </div>
+            <div class="supplements-guarantee">
+                {{ section.settings.bottomtext }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Ініціалізація при завантаженні сторінки
+    document.addEventListener('DOMContentLoaded', function () {
+        initreviewsSlider();
+        initreviewsGallery();
+    });
+
+    const supplementsSlider = document.querySelector('.supplements-slider');
+    const supplementsBtnPrev = document.querySelector('.supplements-nav .btn-arrow--prev');
+    const supplementsBtnNext = document.querySelector('.supplements-nav .btn-arrow--next');
+
+    if (supplementsSlider) {
+        new Swiper(supplementsSlider, {
+            slidesPerView: 'auto',
+            spaceBetween: 24,
+            navigation: {
+                nextEl: supplementsBtnNext,
+                prevEl: supplementsBtnPrev,
+            },
+        });
+    }
+</script>
+
+{% schema %}
+{
+  "name": "Custom supplements",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+      "default": "SubTitle"
+    },
+    {
+      "type": "html",
+      "id": "bottomtext",
+      "label": "Bottom text",
+      "default": "Bottom text"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "reviews",
+                "label": "Reviews",
+                "default": "52 reviews"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Vitality Capsules"
+            },
+            {
+                "type": "text",
+                "id": "price",
+                "label": "Price",
+                "default": "$67.99 - $79.99 | 30 day supply"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text",
+                "default": "Embark on a journey of daily comfort & well-being with our Daily Balance Vitality Capsules."
+            },
+            {
+                "type": "text",
+                "id": "button_text",
+                "label": "button Text",
+                "default": "shop now"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "button link"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom supplements"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,111 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="report">
+    <div class="container">
+        <div class="report-inner">
+            <div class="report-content">
+                <h2 class="report-title">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="report-subtitle">
+                    {{ section.settings.subtitle }}
+                </div>
+                <div class="report-description">
+                    <p>
+                        {{ section.settings.text }}
+                    </p>
+                </div>
+                <ul class="report-list">
+                    <li class="report-item">
+                        {{section.settings.item1 }}
+                    </li>
+                    <li class="report-item">
+                        {{section.settings.item2 }}
+                    </li>
+                    <li class="report-item">
+                        {{section.settings.item3 }}
+                    </li>
+                </ul>
+                <a href="{{ section.settings.button_link }}" class="btn btn--secondary">
+                    {{ section.settings.button_text }}
+                </a>
+            </div>
+            <div class="report-image">
+                <img src="{{ section.settings.right_image | img_url:'master' }}" alt="founder" />
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Report",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "DOWNLOAD YOUR PROGRAM"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image",
+        "label": "Right Image"
+    },
+    {
+      "type": "text",
+      "id": "item1",
+      "label": "Item 1 text",
+    },
+    {
+      "type": "text",
+      "id": "item2",
+      "label": "Item 2 text",
+    },
+    {
+      "type": "text",
+      "id": "item3",
+      "label": "Item 3 text",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Report"
+    }
+  ]
+}
+{% endschema %}

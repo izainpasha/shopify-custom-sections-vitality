@@ -1,0 +1,93 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .headerpage-inner{
+    padding: 110px 0 60px 0;
+  }
+  .headerpage-title{
+    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 120%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #183013;
+  }
+  .headerpage-title span{
+    color: #56a535;
+  }
+  .headerpage-subtitle{
+    margin-top: 32px;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 32px;
+    line-height: 120%;
+    text-align: center;
+    color: #1D1F1E;
+  }
+
+  @media(max-width: 799px){
+    .headerpage-inner{
+        padding: 60px 0 30px 0;
+    }
+    .headerpage-title{
+        font-size: 36px;
+    }
+    .headerpage-subtitle{
+        font-size: 24px;
+        margin-top: 16px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="headerpage">
+    <div class="container">
+        <div class="headerpage-inner">
+            <div class="headerpage-one">
+                <div class="headerpage-head">
+                    <h1 class="headerpage-title">
+                        {{section.settings.title }}
+                    </h1>
+                    <div class="headerpage-subtitle">
+                        {{ section.settings.subtitle }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom headerpage",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom headerpage"
+    }
+  ]
+}
+{% endschema %}

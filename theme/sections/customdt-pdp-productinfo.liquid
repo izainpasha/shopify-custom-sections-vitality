@@ -1,0 +1,371 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .pdp-productinfo{
+    padding: 75px 0;
+  }
+  .pdp-productinfo-title{
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 120%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #183013;
+    letter-spacing: normal;
+    font-family: 'Beatrice',sans-serif!important;
+  }
+  .pdp-productinfo-title span{
+    color: #56A535;
+  }
+  .pdp-productinfo-subtitle{
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #1D1F1E;
+    font-family: 'Beatrice',sans-serif!important;
+    margin-top: 30px;
+    letter-spacing: normal;
+  }
+  .pdp-productinfo-inner{
+    padding: 34px 0;
+    display: grid;
+    grid-template-columns: 1fr 362px 1fr;
+    gap: 46px;
+  }
+  .pdp-productinfo-inner-middle{
+    display: flex;
+    align-items: center;
+  }
+  .pdp-productinfo-inner-middle img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .pdp-productinfo-inner-left-item-title{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    text-transform: capitalize;
+    color: #56A535;
+    letter-spacing: normal;
+  }
+  .pdp-productinfo-inner-left-item-text{
+    margin-top: 9px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1D1F1E;
+    letter-spacing: normal;
+  }
+  .pdp-productinfo-inner-left-item{
+    display:flex;
+    gap: 25px;
+  }
+  .pdp-productinfo-inner-left-item-image{
+    display:block;
+    width: 80px;
+    height: auto;
+  }
+  .pdp-productinfo-inner-left,
+  .pdp-productinfo-inner-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  @media(max-width: 799px){
+    .pdp-productinfo{
+        padding: 25px 0;
+    }
+    .pdp-productinfo-title{
+        font-size: 32px;
+    }
+    .pdp-productinfo-subtitle{
+        font-size: 18px;
+    }
+    .pdp-productinfo-inner{
+        grid-template-columns: 1fr;
+    }
+    .pdp-productinfo-inner-left-item{
+        gap: 10px;
+    }
+    .pdp-productinfo-inner-left,
+    .pdp-productinfo-inner-right{
+        gap: 24px;
+    }
+    .pdp-productinfo-inner-left-item-image{
+        width: 60px;
+    }
+    .pdp-productinfo-inner-left-item-title{
+        font-size: 16px;
+    }
+    .pdp-productinfo-inner-left-item-text{
+        font-size: 14px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="pdp-productinfo">
+    <div class="container">
+        <h2 class="pdp-productinfo-title">
+            {{ section.settings.title }}
+        </h2>
+
+        <h4 class="pdp-productinfo-subtitle">
+            {{ section.settings.subtitle }}
+        </h4>
+
+        <div class="pdp-productinfo-inner">
+            <div class="pdp-productinfo-inner-left">
+                <div class="pdp-productinfo-inner-left-item">
+                    <img class="pdp-productinfo-inner-left-item-image" src="{{ section.settings.item1image | img_url:'master' }}">
+                    <div>
+                        <div class="pdp-productinfo-inner-left-item-title">{{ section.settings.item1title }}</div>
+                        <div class="pdp-productinfo-inner-left-item-text">{{ section.settings.item1text }}</div>
+                    </div>
+                </div>
+
+                <div class="pdp-productinfo-inner-left-item">
+                    <img class="pdp-productinfo-inner-left-item-image" src="{{ section.settings.item2image | img_url:'master' }}">
+                    <div>
+                        <div class="pdp-productinfo-inner-left-item-title">{{ section.settings.item2title }}</div>
+                        <div class="pdp-productinfo-inner-left-item-text">{{ section.settings.item2text }}</div>
+                    </div>
+                </div>
+
+                <div class="pdp-productinfo-inner-left-item">
+                    <img class="pdp-productinfo-inner-left-item-image" src="{{ section.settings.item3image | img_url:'master' }}">
+                    <div>
+                        <div class="pdp-productinfo-inner-left-item-title">{{ section.settings.item3title }}</div>
+                        <div class="pdp-productinfo-inner-left-item-text">{{ section.settings.item3text }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdp-productinfo-inner-middle">
+                <img src="{{ section.settings.image | img_url:'master' }}">
+            </div>
+
+            <div class="pdp-productinfo-inner-right">
+                <div class="pdp-productinfo-inner-left-item">
+                    <img class="pdp-productinfo-inner-left-item-image" src="{{ section.settings.itemr1image | img_url:'master' }}">
+                    <div>
+                        <div class="pdp-productinfo-inner-left-item-title">{{ section.settings.itemr1title }}</div>
+                        <div class="pdp-productinfo-inner-left-item-text">{{ section.settings.itemr1text }}</div>
+                    </div>
+                </div>
+
+                <div class="pdp-productinfo-inner-left-item">
+                    <img class="pdp-productinfo-inner-left-item-image" src="{{ section.settings.itemr2image | img_url:'master' }}">
+                    <div>
+                        <div class="pdp-productinfo-inner-left-item-title">{{ section.settings.itemr2title }}</div>
+                        <div class="pdp-productinfo-inner-left-item-text">{{ section.settings.itemr2text }}</div>
+                    </div>
+                </div>
+
+                <div class="pdp-productinfo-inner-left-item">
+                    <img class="pdp-productinfo-inner-left-item-image" src="{{ section.settings.itemr3image | img_url:'master' }}">
+                    <div>
+                        <div class="pdp-productinfo-inner-left-item-title">{{ section.settings.itemr3title }}</div>
+                        <div class="pdp-productinfo-inner-left-item-text">{{ section.settings.itemr3text }}</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="dt-pdp-buttonprice">
+            <div class="dt-pdp-buttonprice-top">
+                {{ section.settings.price_text }}
+                <span>
+                    {{ section.settings.save }}
+                </span>
+            </div>
+
+            <div class="dt-pdp-buttonprice-btn">
+                <a href="{{ section.settings.button_link }}">
+                    {{ section.settings.button_text }}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="dt-pdp-buttonprice-bottom">
+                {% render 'dt-pdpreviews' %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom pdp product info",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image middle"
+    },
+    {
+        "type": "header",
+        "content": "Left items"
+    },
+    {
+        "type": "image_picker",
+        "id": "item1image",
+        "label": "Item 1 Image"
+    },
+    {
+        "type": "text",
+        "id": "item1title",
+        "label": "Item 1 Title"
+    },
+    {
+        "type": "text",
+        "id": "item1text",
+        "label": "Item 1 Text"
+    },
+    {
+        "type": "image_picker",
+        "id": "item2image",
+        "label": "Item 2 Image"
+    },
+    {
+        "type": "text",
+        "id": "item2title",
+        "label": "Item 2 Title"
+    },
+    {
+        "type": "text",
+        "id": "item2text",
+        "label": "Item 2 Text"
+    },
+    {
+        "type": "image_picker",
+        "id": "item3image",
+        "label": "Item 3 Image"
+    },
+    {
+        "type": "text",
+        "id": "item3title",
+        "label": "Item 3 Title"
+    },
+    {
+        "type": "text",
+        "id": "item3text",
+        "label": "Item 3 Text"
+    },
+    {
+        "type": "header",
+        "content": "Right items"
+    },
+    {
+        "type": "image_picker",
+        "id": "itemr1image",
+        "label": "Item 1 Image"
+    },
+    {
+        "type": "text",
+        "id": "itemr1title",
+        "label": "Item 1 Title"
+    },
+    {
+        "type": "text",
+        "id": "itemr1text",
+        "label": "Item 1 Text"
+    },
+    {
+        "type": "image_picker",
+        "id": "itemr2image",
+        "label": "Item 2 Image"
+    },
+    {
+        "type": "text",
+        "id": "itemr2title",
+        "label": "Item 2 Title"
+    },
+    {
+        "type": "text",
+        "id": "itemr2text",
+        "label": "Item 2 Text"
+    },
+    {
+        "type": "image_picker",
+        "id": "itemr3image",
+        "label": "Item 3 Image"
+    },
+    {
+        "type": "text",
+        "id": "itemr3title",
+        "label": "Item 3 Title"
+    },
+    {
+        "type": "text",
+        "id": "itemr3text",
+        "label": "Item 3 Text"
+    },
+    {
+        "type": "header",
+        "content": "BOttom button settings"
+    },
+    {
+      "type": "html",
+      "id": "price_text",
+      "label": "Price text",
+      "default": "For as low as <em>$85.00</em> $75.00"
+    },
+    {
+      "type": "text",
+      "id": "save",
+      "label": "Save text",
+      "default": "save $10"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "take the quiz"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Custom pdp product info"
+    }
+  ]
+}
+{% endschema %}

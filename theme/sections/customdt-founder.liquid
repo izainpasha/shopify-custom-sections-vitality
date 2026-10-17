@@ -1,0 +1,112 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="founder">
+    <div class="container">
+        <div class="founder-inner">
+            <div class="founder-content">
+                <h2 class="founder-title">{{section.settings.title}}</h2>
+                <div class="founder-subtitle">{{section.settings.subtitle}}</div>
+                <div class="founder-description">
+                    {{section.settings.text}}
+                </div>
+
+                {% if section.settings.review != blank %}
+                <div class="founder-review">
+                    <div class="founder-avatar">
+                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/founder-avatar.png?v=1764266469" alt="founder" />
+                    </div>
+                    <div class="founder-review-content">
+                        <div class="stars">
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                        </div>
+                        <div class="founder-review-text">
+                            <p>
+                                {{ section.settings.review }}
+                                
+                            </p>
+                        </div>
+                        <div class="founder-review-author">
+                            <div class="founder-review-name">Patricia I.</div>
+                            <div class="founder-review-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/verified.svg?v=1764266587" alt="review" />
+                            </div>
+                            <div class="founder-review-verified">Verified Customer</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="founder-image">
+                <img src="{{section.settings.image | img_url:"master"}}" alt="founder" />
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Founder",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "default": "Title",
+        "label": "Title"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "default": "Text",
+        "label": "Subtitle"
+    },
+    {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Right Image"
+    },
+    {
+        "type": "text",
+        "id": "review",
+        "label": "Review"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Founder"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="benefits">
+    <div class="container">
+        <div class="benefits-inner">
+            <ul class="benefits-list">
+                {% for block in section.blocks %}
+                    <li class="benefits-item">
+                        <div class="benefits-icon">
+                            <img src="{{ block.settings.image | img_url:'master' }}" alt="benefits" />
+                        </div>
+                        <div class="benefits-content">
+                            <h2 class="benefits-title">{{block.settings.title}}</h2>
+                            <p class="benefits-description">{{ block.settings.text }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Benefits",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "t:sections.collapsible_content.blocks.collapsible_row.name",
+      "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "default": "Title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "default": "Text",
+                "label": "Text"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Benefits"
+    }
+  ]
+}
+{% endschema %}

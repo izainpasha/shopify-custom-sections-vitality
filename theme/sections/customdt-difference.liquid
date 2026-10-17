@@ -1,0 +1,177 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="difference">
+    <div class="container">
+        <div class="difference-inner">
+            <div class="difference-head">
+                <h2 class="difference-title">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="difference-subtitle">
+                    {{ section.settings.subtitle }}
+                </div>
+            </div>
+            <div class="difference-wrapper">
+                <div class="difference-card difference-card--one">
+                    <ul class="difference-list">
+                        <li class="difference-item">
+                            {{ section.settings.item1 }}
+                        </li>
+                        <li class="difference-item">
+                            {{ section.settings.item2 }}
+                        </li>
+                        <li class="difference-item">
+                            {{ section.settings.item3 }}
+                        </li>
+                        <li class="difference-item">
+                            {{ section.settings.item4 }}
+                        </li>
+                        <li class="difference-item">
+                            {{ section.settings.item5 }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="difference-card difference-card--two">
+                    <div class="difference-logo">
+                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/difference-logo.svg?v=1764269563" alt="difference" />
+                    </div>
+
+                    <ul class="difference-list">
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/check.svg?v=1764269591" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/check.svg?v=1764269591" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/check.svg?v=1764269591" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/check.svg?v=1764269591" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/check.svg?v=1764269591" alt="difference" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="difference-card difference-card--three">
+                    <div class="difference-name">Others</div>
+                    <ul class="difference-list">
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/cross.svg?v=1764269636" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/cross.svg?v=1764269636" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/cross.svg?v=1764269636" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/cross.svg?v=1764269636" alt="difference" />
+                            </div>
+                        </li>
+                        <li class="difference-item">
+                            <div class="difference-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/cross.svg?v=1764269636" alt="difference" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+                {{ section.settings.button_text }}
+            </a>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom difference",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    },
+    {
+      "type": "text",
+      "id": "item1",
+      "label": "Item 1 text",
+    },
+    {
+      "type": "text",
+      "id": "item2",
+      "label": "Item 2 text",
+    },
+    {
+      "type": "text",
+      "id": "item3",
+      "label": "Item 3 text",
+    },
+    {
+      "type": "text",
+      "id": "item4",
+      "label": "Item 4 text",
+    },
+    {
+      "type": "text",
+      "id": "item5",
+      "label": "Item 5 text",
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "DOWNLOAD YOUR PROGRAM"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom difference"
+    }
+  ]
+}
+{% endschema %}

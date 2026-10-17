@@ -1,0 +1,115 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="choose">
+    <div class="container">
+        <div class="choose-inner">
+            <div class="choose-one">
+                <div class="choose-image">
+                    <img src="{{ section.settings.left_image | img_url:'master' }}" alt="founder" />
+                </div>
+            </div>
+            <div class="choose-content">
+                <h2 class="choose-title">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="choose-description">
+                    <p>
+                        {{section.settings.subtitle}}
+                    </p>
+                </div>
+
+                <a href="{{ section.settings.button_link }}" class="btn btn--secondary">
+                    {{ section.settings.button_text }}
+                </a>
+
+                <div class="choose-review">
+                    <div class="choose-avatar">
+                        <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/founder-avatar.png?v=1764266469" alt="founder" />
+                    </div>
+                    <div class="choose-review-content">
+                        <div class="stars">
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                            <div class="stars-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/star.svg?v=1764266484" alt="star" />
+                            </div>
+                        </div>
+                        <div class="choose-review-text">
+                            <p>“I just feel more secure taking vitality capsules! i have shared with family and they love also!”</p>
+                        </div>
+                        <div class="choose-review-author">
+                            <div class="choose-review-name">Patricia I.</div>
+                            <div class="choose-review-icon">
+                                <img src="https://cdn.shopify.com/s/files/1/0582/8804/6267/files/verified.svg?v=1764266587" alt="review" />
+                            </div>
+                            <div class="choose-review-verified">Verified Customer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom choose",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "SubTitle",
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "take the quiz"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+    {
+        "type": "image_picker",
+        "id": "left_image",
+        "label": "Left Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom choose"
+    }
+  ]
+}
+{% endschema %}

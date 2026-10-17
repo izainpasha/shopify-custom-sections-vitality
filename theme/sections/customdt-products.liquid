@@ -1,0 +1,198 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="products">
+    <div class="container">
+        <div class="products-inner">
+            <div class="products-head">
+                <h2 class="products-title">
+                    {{ section.settings.title }}
+                    
+                </h2>
+                <div class="products-description">
+                    {{ section.settings.subtitle }}
+                </div>
+            </div>
+            <div class="products-list">
+                <a class="products-item" href="{{ section.settings.left_button_link }}">
+                    <div class="products-images">
+                        <div class="products-main-image">
+                            <img src="{{ section.settings.left_image1 | img_url:'master' }}" alt="products" />
+                        </div>
+                        <div class="products-protocol">
+                            <img src="{{ section.settings.left_image2 | img_url:'master' }}" alt="products" />
+                        </div>
+                        <div class="products-protocol-include">
+                            <img src="{{ section.settings.left_image3 | img_url:'master' }}" alt="products" />
+                        </div>
+                    </div>
+                    <div class="products-content">
+                        <h3 class="products-name">{{ section.settings.lefttitle }}</h3>
+                        <div class="products-subtitle">{{ section.settings.leftsubtitle }}</div>
+                        <div class="products-price">{{section.settings.leftprice}}</div>
+                        <ul class="products-characteristics">
+                            <li class="products-characteristic">Cayenne pepper for enhanced effects</li>
+                            <li class="products-characteristic">Maximum potency, fewer capsules needed</li>
+                            <li class="products-characteristic">Ideal for higher tolerance and significant results</li>
+                            <li class="products-characteristic">Boosts energy and performance</li>
+                            <li class="products-characteristic">Suited for experienced users</li>
+                        </ul>
+                        <div class="btn btn--secondary">shop now</div>
+                    </div>
+                </a>
+                <a class="products-item" href="{{ section.settings.right_button_link }}">
+                    <div class="products-images">
+                        <div class="products-main-image">
+                            <img src="{{ section.settings.right_image1 | img_url:'master' }}" alt="products" />
+                        </div>
+                        <div class="products-protocol">
+                            <img src="{{ section.settings.right_image2 | img_url:'master' }}" alt="products" />
+                        </div>
+                        <div class="products-protocol-include">
+                            <img src="{{ section.settings.right_image3 | img_url:'master' }}" alt="products" />
+                        </div>
+                    </div>
+                    <div class="products-content">
+                        <h3 class="products-name">{{ section.settings.righttitle }}</h3>
+                        <div class="products-subtitle">{{ section.settings.rightsubtitle }}</div>
+                        <div class="products-price">{{ section.settings.rightprice }}</div>
+                        <ul class="products-characteristics">
+                            <li class="products-characteristic">Clove and turmeric for gentle support</li>
+                            <li class="products-characteristic">Balanced strengthfor daily use</li>
+                            <li class="products-characteristic">Perfect for sensitivities or beginners</li>
+                            <li class="products-characteristic">Supports regular bowel movements gently</li>
+                            <li class="products-characteristic">Milder detoxification approach</li>
+                        </ul>
+                        <div class="btn btn--secondary">shop now</div>
+                    </div>
+                </a>
+            </div>
+            <div class="products-footer">
+                <p><span>Try it risk-free for 30 days.</span> Not fully satisfied? Get a full refund.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom products",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "SubTitle",
+        "default": "Quick links"
+    },
+    {
+      "type": "header",
+      "content": "Left Product"
+    },
+    {
+        "type": "text",
+        "id": "lefttitle",
+        "label": "Left title",
+        "default": "The Advanced"
+    },
+    {
+        "type": "text",
+        "id": "leftsubtitle",
+        "label": "Left subtitle",
+        "default": "Cleansing Protocol"
+    },
+    {
+        "type": "text",
+        "id": "leftprice",
+        "label": "Left Price",
+        "default": "$85.00"
+    },
+    {
+        "type": "image_picker",
+        "id": "left_image1",
+        "label": "Left Image1"
+    },
+    {
+        "type": "image_picker",
+        "id": "left_image2",
+        "label": "Left Image2"
+    },
+    {
+        "type": "image_picker",
+        "id": "left_image3",
+        "label": "Left Image3"
+    },
+    {
+        "type": "url",
+        "id": "left_button_link",
+        "label": "left Button link"
+    },
+    {
+      "type": "header",
+      "content": "Right Product"
+    },
+    {
+        "type": "text",
+        "id": "righttitle",
+        "label": "Right title",
+        "default": "The Original"
+    },
+    {
+        "type": "text",
+        "id": "rightsubtitle",
+        "label": "Right subtitle",
+        "default": "Cleansing Protocol"
+    },
+    {
+        "type": "text",
+        "id": "rightprice",
+        "label": "Right Price",
+        "default": "$75.00"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image1",
+        "label": "Right Image1"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image2",
+        "label": "Right Image2"
+    },
+    {
+        "type": "image_picker",
+        "id": "right_image3",
+        "label": "Right Image3"
+    },
+    {
+    "type": "url",
+    "id": "right_button_link",
+    "label": "right Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom products"
+    }
+  ]
+}
+{% endschema %}
